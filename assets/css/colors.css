@@ -1,0 +1,73 @@
+/* colors.css */
+
+/* Primary Colors */
+:root {
+    --primary-color: #FF9933; /* Inspired by the saffron color of Maharashtra's traditional attire */
+    --secondary-color: #FFC107; /* A warm golden hue symbolizing prosperity */
+    --accent-color: #28A745; /* Representing the green fields of the state */
+    --background-color: #F8F9FA; /* A subtle, neutral background */
+    --text-color: #212529; /* Dark color for readability */
+}
+
+/* Header */
+.header {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Buttons */
+.button-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+}
+
+.button-secondary {
+    background-color: var(--secondary-color);
+    color: #212529;
+    border: none;
+}
+
+.button-primary:hover,
+.button-secondary:hover {
+    opacity: 0.8;
+}
+
+/* Links */
+a {
+    color: var(--primary-color);
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+/* Backgrounds */
+.background-primary {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.background-secondary {
+    background-color: var(--secondary-color);
+    color: #212529;
+}
+
+/* Borders */
+.border-primary {
+    border: 1px solid var(--primary-color);
+}
+
+.border-secondary {
+    border: 1px solid var(--secondary-color);
+}
+
+/* Text */
+.text-primary {
+    color: var(--primary-color);
+}
+
+.text-secondary {
+    color: var(--secondary-color);
+}
+ 
