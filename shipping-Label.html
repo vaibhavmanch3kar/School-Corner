@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nirja Creative Corner - Courier Labels (All 4 on One Page)</title>
+  <style>
+    /*****************************************************************
+      FONT + RESET
+    *****************************************************************/
+    @font-face {
+      font-family: 'Courier New';
+      src: url('ScienceGothic.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    @page {
+      size: A4 landscape;
+      margin: 10mm; /* You can adjust if needed */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Courier New", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: #fff;
+    }
+
+    /********* HEADER (Hidden on Print) *********/
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 60px;
+      background-color: #333;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      z-index: 1000;
+    }
+    .header img {
+      height: 32px;
+      margin-right: 10px;
+    }
+    .header h1 {
+      font-size: 1.2rem;
+      font-weight: normal;
+    }
+
+    /********* CONTENT WRAP *********/
+    .content-wrap {
+      padding-top: 70px; /* space for fixed header */
+      padding-left: 15px;
+      padding-right: 15px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .main-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    /********* LEFT: LABEL PREVIEW *********/
+    .left-content {
+      flex: 1;
+      border: 1px solid #444;
+      border-radius: 5px;
+      padding: 15px;
+      min-width: 400px;
+    }
+
+    .left-content h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .labels-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .label-box {
+      border: 2px solid #000;
+      border-radius: 8px;
+      background-color: #f9f9f9;
+      /* Increased default label font and line-height */
+      font-size: 1.1rem;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      /* Increased min-height and padding */
+      min-height: 240px;
+      padding: 18px;
+      box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .label-box h3 {
+      font-weight: bold;
+      text-transform: uppercase;
+      padding-bottom: 5px;
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #000;
+    }
+
+    .to-box, .from-box {
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      border: 2px solid #000;
+    }
+    .to-box {
+      background-color: #e3f2fd;
+      border-color: #007BFF;
+    }
+    .from-box {
+      background-color: #fff3cd;
+      border-color: #FF5733;
+      text-align: right;
+    }
+    .spacer {
+      flex: 1;
+    }
+
+    /********* RIGHT: FORM (Not Printed) *********/
+    .right-content {
+      width: 360px;
+      min-width: 300px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 15px;
+      background: #f9f9f9;
+      height: fit-content;
+    }
+    .right-content h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #333;
+    }
+    .label-block {
+      margin-bottom: 10px;
+    }
+    .label-block h3 {
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+      color: #444;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 5px;
+    }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 8px;
+    }
+    .form-row label {
+      font-weight: bold;
+      margin-bottom: 3px;
+      color: #555;
+      font-size: 1rem;
+    }
+    .form-row input[type="text"] {
+      padding: 8px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    .btn-row {
+      margin-top: 10px;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 18px;
+      margin-right: 10px;
+      font-size: 1rem;
+      border-radius: 3px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #555;
+    }
+
+    /********* PRINT OVERRIDES *********/
+    @media print {
+
+      /* Hide header and form side */
+      .header,
+      .right-content {
+        display: none !important;
+      }
+
+      @page {
+        size: A4 landscape;
+        margin: 5mm; /* can be adjusted up/down if needed */
+      }
+
+      .content-wrap {
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+      }
+      .left-content {
+        border: none;
+        padding: 0;
+      }
+      .labels-container {
+        gap: 5px; /* tighter spacing for print */
+      }
+      .label-box {
+        /* Slightly larger than before, but still smaller than screen */
+        font-size: 0.95rem;
+        line-height: 1.3;
+        /* Increased min-height a bit */
+        min-height: 200px;
+        padding: 12px;
+        box-shadow: none; /* remove shadow in print */
+      }
+    }
+
+    /********* RESPONSIVE *********/
+    @media (max-width: 800px) {
+      .main-container {
+        flex-direction: column;
+      }
+      .left-content, .right-content {
+        width: 100%;
+        min-width: auto;
+      }
+      .left-content {
+        order: 2; 
+      }
+      .right-content {
+        order: 1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .labels-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="assets/images/logo.png" alt="Logo">
+    <h1>Nirja Creative Corner</h1>
+  </div>
+
+  <div class="content-wrap">
+    <div class="main-container">
+      <!-- LEFT: LABELS -->
+      <div class="left-content">
+        <h2>Courier Labels (Preview)</h2>
+        <div class="labels-container">
+          <!-- Label 1 -->
+          <div class="label-box">
+            <div class="to-box">
+              <h3>To:</h3>
+              <p id="preview1"></p>
+            </div>
+            <div class="spacer"></div>
+            <div class="from-box">
+              <h3>From:</h3>
+              <p>
+                Nirja Creative Corner<br/>
+                A410, Randhir Vihar CHS, TP Road<br/>
+                Bhandup (W), Mumbai – 400078<br/>
+                Mobile: 8898323336
+              </p>
+            </div>
+          </div>
+          <!-- Label 2 -->
+          <div class="label-box">
+            <div class="to-box">
+              <h3>To:</h3>
+              <p id="preview2"></p>
+            </div>
+            <div class="spacer"></div>
+            <div class="from-box">
+              <h3>From:</h3>
+              <p>
+                Nirja Creative Corner<br/>
+                A410, Randhir Vihar CHS, TP Road<br/>
+                Bhandup (W), Mumbai – 400078<br/>
+                Mobile: 8898323336
+              </p>
+            </div>
+          </div>
+          <!-- Label 3 -->
+          <div class="label-box">
+            <div class="to-box">
+              <h3>To:</h3>
+              <p id="preview3"></p>
+            </div>
+            <div class="spacer"></div>
+            <div class="from-box">
+              <h3>From:</h3>
+              <p>
+                Nirja Creative Corner<br/>
+                A410, Randhir Vihar CHS, TP Road<br/>
+                Bhandup (W), Mumbai – 400078<br/>
+                Mobile: 8898323336
+              </p>
+            </div>
+          </div>
+          <!-- Label 4 -->
+          <div class="label-box">
+            <div class="to-box">
+              <h3>To:</h3>
+              <p id="preview4"></p>
+            </div>
+            <div class="spacer"></div>
+            <div class="from-box">
+              <h3>From:</h3>
+              <p>
+                Nirja Creative Corner<br/>
+                A410, Randhir Vihar CHS, TP Road<br/>
+                Bhandup (W), Mumbai – 400078<br/>
+                Mobile: 8898323336
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- RIGHT: FORM -->
+      <div class="right-content">
+        <h2>Enter Customer Details</h2>
+
+        <!-- Label 1 -->
+        <div class="label-block">
+          <h3>Label 1</h3>
+          <div class="form-row">
+            <label for="l1name">Name</label>
+            <input type="text" id="l1name" placeholder="Receiver Name" />
+          </div>
+          <div class="form-row">
+            <label for="l1addr">Address</label>
+            <input type="text" id="l1addr" placeholder="Receiver Address" />
+          </div>
+          <div class="form-row">
+            <label for="l1mob">Mobile</label>
+            <input type="text" id="l1mob" placeholder="Receiver Mobile" />
+          </div>
+        </div>
+
+        <!-- Label 2 -->
+        <div class="label-block">
+          <h3>Label 2</h3>
+          <div class="form-row">
+            <label for="l2name">Name</label>
+            <input type="text" id="l2name" placeholder="Receiver Name" />
+          </div>
+          <div class="form-row">
+            <label for="l2addr">Address</label>
+            <input type="text" id="l2addr" placeholder="Receiver Address" />
+          </div>
+          <div class="form-row">
+            <label for="l2mob">Mobile</label>
+            <input type="text" id="l2mob" placeholder="Receiver Mobile" />
+          </div>
+        </div>
+
+        <!-- Label 3 -->
+        <div class="label-block">
+          <h3>Label 3</h3>
+          <div class="form-row">
+            <label for="l3name">Name</label>
+            <input type="text" id="l3name" placeholder="Receiver Name" />
+          </div>
+          <div class="form-row">
+            <label for="l3addr">Address</label>
+            <input type="text" id="l3addr" placeholder="Receiver Address" />
+          </div>
+          <div class="form-row">
+            <label for="l3mob">Mobile</label>
+            <input type="text" id="l3mob" placeholder="Receiver Mobile" />
+          </div>
+        </div>
+
+        <!-- Label 4 -->
+        <div class="label-block">
+          <h3>Label 4</h3>
+          <div class="form-row">
+            <label for="l4name">Name</label>
+            <input type="text" id="l4name" placeholder="Receiver Name" />
+          </div>
+          <div class="form-row">
+            <label for="l4addr">Address</label>
+            <input type="text" id="l4addr" placeholder="Receiver Address" />
+          </div>
+          <div class="form-row">
+            <label for="l4mob">Mobile</label>
+            <input type="text" id="l4mob" placeholder="Receiver Mobile" />
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn" onclick="updateLabels()">Update Labels</button>
+          <button class="btn" onclick="window.print()">Print Labels</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function updateLabels() {
+      // Gather input
+      const l1 = {
+        name: document.getElementById('l1name').value,
+        addr: document.getElementById('l1addr').value,
+        mob:  document.getElementById('l1mob').value
+      };
+      const l2 = {
+        name: document.getElementById('l2name').value,
+        addr: document.getElementById('l2addr').value,
+        mob:  document.getElementById('l2mob').value
+      };
+      const l3 = {
+        name: document.getElementById('l3name').value,
+        addr: document.getElementById('l3addr').value,
+        mob:  document.getElementById('l3mob').value
+      };
+      const l4 = {
+        name: document.getElementById('l4name').value,
+        addr: document.getElementById('l4addr').value,
+        mob:  document.getElementById('l4mob').value
+      };
+
+      function buildTo({ name, addr, mob }) {
+        let text = '';
+        if (name) text += name + '<br/>';
+        if (addr) text += addr + '<br/>';
+        if (mob)  text += 'Mobile: ' + mob;
+        return text;
+      }
+
+      // Update label previews
+      document.getElementById('preview1').innerHTML = buildTo(l1);
+      document.getElementById('preview2').innerHTML = buildTo(l2);
+      document.getElementById('preview3').innerHTML = buildTo(l3);
+      document.getElementById('preview4').innerHTML = buildTo(l4);
+    }
+  </script>
+</body>
+</html>

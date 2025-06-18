@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3A Class Timetable - Horizontal (All Days)</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f7f7f7; margin: 30px; }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 1000px;
+            background: #fff;
+            margin: auto;
+            box-shadow: 0 2px 8px #ccc;
+        }
+        th, td {
+            border: 1px solid #b6b6b6;
+            padding: 7px 5px;
+            text-align: center;
+        }
+        th {
+            background: #e0e8f5;
+            font-size: 1.08em;
+        }
+        .time-col {
+            background: #b3e0ff;
+            font-weight: bold;
+            width: 115px;
+        }
+        .uniform-header {
+            background: #f4f2e6;
+            color: #23527c;
+            font-size: 0.98em;
+            font-weight: bold;
+        }
+        .short-break, .long-break {
+            background: #ffe4c4;
+            font-weight: bold;
+        }
+        .red { background: #ff6a6a; color: #fff; }
+        .green { background: #71d88c; color: #fff; }
+        caption {
+            font-size: 1.25em;
+            margin-bottom: 14px;
+            color: #315b96;
+            font-weight: bold;
+        }
+        @media print {
+            body { background: #fff; }
+            table { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>3A - Vijaya Class Timetable<br>
+            <span style="font-size:0.82em; font-weight:normal; color:#222;">
+            <strong>Uniform:</strong> Mon - PE Uniform, Tue - PE Uniform, Wed - Regular (Football Jersey), Thu - House T-shirt, Fri - Regular Uniform
+            </span>
+        </caption>
+        <tr>
+            <th class="time-col"></th>
+            <th>Monday</th>
+            <th>Tuesday</th>
+            <th>Wednesday</th>
+            <th>Thursday</th>
+            <th>Friday</th>
+        </tr>
+        <tr>
+            <td class="time-col">Uniform</td>
+            <td class="uniform-header">PE Uniform</td>
+            <td class="uniform-header">PE Uniform</td>
+            <td class="uniform-header">Regular Uniform<br>(Football Jersey)</td>
+            <td class="uniform-header">Regular Uniform</td>
+            <td class="uniform-header">House T-shirt</td>
+        </tr>
+        <tr>
+            <td class="time-col">7:30 - 7:50</td>
+            <td>EL</td>
+            <td>EL</td>
+            <td>EL</td>
+            <td>EL</td>
+            <td>EL</td>
+        </tr>
+        <tr>
+            <td class="time-col">7:50 - 8:25</td>
+            <td>SCI</td>
+            <td>GEOG</td>
+            <td>HIN</td>
+            <td>SKATING</td>
+            <td>SCI</td>
+        </tr>
+        <tr>
+            <td class="time-col">8:25 - 9:00</td>
+            <td>TKD</td>
+            <td>ART</td>
+            <td>SCI</td>
+            <td>SKATING</td>
+            <td>LIB/Ger</td>
+        </tr>
+        <tr>
+            <td class="time-col">9:00 - 9:15</td>
+            <td class="short-break" colspan="5">SHORT BREAK</td>
+        </tr>
+        <tr>
+            <td class="time-col">9:15 - 9:50</td>
+            <td>MATH</td>
+            <td>HIN</td>
+            <td class="red">10X</td>
+            <td>HIN</td>
+            <td>HIS</td>
+        </tr>
+        <tr>
+            <td class="time-col">9:50 - 10:25</td>
+            <td class="red">10X</td>
+            <td>PE</td>
+            <td>FOOTBALL</td>
+            <td>SCI</td>
+            <td>ENG</td>
+        </tr>
+        <tr>
+            <td class="time-col">10:25 - 11:00</td>
+            <td>SOFTBALL</td>
+            <td class="red">10X</td>
+            <td>MATH</td>
+            <td>MATH</td>
+            <td>ENG</td>
+        </tr>
+        <tr>
+            <td class="time-col">11:00 - 11:35</td>
+            <td>MATH</td>
+            <td>MATH</td>
+            <td>ENG</td>
+            <td class="red">10X</td>
+            <td class="red">10X</td>
+        </tr>
+        <tr>
+            <td class="time-col">11:35 - 12:10</td>
+            <td>HIS</td>
+            <td>ENG</td>
+            <td>MAR</td>
+            <td>GEOG</td>
+            <td>YOGA</td>
+        </tr>
+        <tr>
+            <td class="time-col">12:10 - 12:40</td>
+            <td class="long-break" colspan="5">LONG BREAK</td>
+        </tr>
+        <tr>
+            <td class="time-col">12:40 - 1:10</td>
+            <td>HIN</td>
+            <td>COMP</td>
+            <td class="red">10X</td>
+            <td>ENG</td>
+            <td>MAR</td>
+        </tr>
+        <tr>
+            <td class="time-col">1:10 - 1:40</td>
+            <td class="green">MUSIC</td>
+            <td class="green">GK/VE</td>
+            <td>DANCE</td>
+            <td>COMP</td>
+            <td>MAR</td>
+        </tr>
+    </table>
+    <br>
+    <div style="max-width:1000px;margin:auto;font-size:0.93em;">
+        <b>Legend:</b> <span style="background:#ff6a6a;color:#fff;padding:2px 5px;">10X</span> Special Class, 
+        <span style="background:#71d88c;color:#fff;padding:2px 5px;">MUSIC, GK/VE</span> Extra Activity
+    </div>
+</body>
+</html>

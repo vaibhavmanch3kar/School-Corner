@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Label Maker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Comic Neue', cursive;
+      background: #fffde7;
+      padding: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #ff6f00;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff3e0;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #ffd54f;
+    }
+
+    label, input {
+      display: block;
+      width: 100%;
+      margin: 5px 0;
+    }
+
+    input {
+      padding: 10px;
+      border: 2px solid #ffe0b2;
+      border-radius: 8px;
+      font-size: 18px;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: #ff8f00;
+      color: white;
+      border: none;
+      font-size: 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 12px;
+    }
+
+    button:hover {
+      background: #e65100;
+    }
+
+    .item-inputs {
+      margin-top: 15px;
+    }
+
+    .item-inputs input {
+      margin-bottom: 6px;
+    }
+
+    #preview-section {
+      margin-top: 30px;
+      text-align: center;
+    }
+
+    .label-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 5px;
+    }
+
+    .label-preview {
+      flex: 1 0 21%; /* about 4 per row */
+      max-width: 21%;
+      padding: 0 0 0 18px; /* left padding for space before text */
+      border-radius: 8px;
+      color: #fff;
+      font-size: 17px;
+      box-sizing: border-box;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.17);
+      min-height: 55px;
+      border: 2px solid #fffde7;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center; /* vertical center */
+      text-align: center;      /* horizontal center */
+    }
+
+    .print-button {
+      margin-top: 20px;
+      display: none;
+    }
+
+    /* PRINT STYLES */
+    @media print {
+      body * {
+        visibility: hidden !important;
+      }
+      #labelsContainer, #labelsContainer * {
+        visibility: visible !important;
+      }
+      #labelsContainer {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        margin: 0 !important;
+        padding: 0.5cm !important;
+        background: none !important;
+        box-shadow: none !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: flex-start !important;
+        gap: 12px !important;
+      }
+      .label-preview {
+        box-shadow: none !important;
+        page-break-inside: avoid;
+        margin: 0 !important;
+        min-height: 46px !important;
+        border: 1.5px dashed #aaa !important;
+        width: 25vw !important;    /* 4 per row */
+        max-width: 25vw !important;
+        height: 105px !important;  /* 5 rows per A4 portrait */
+        font-size: 15px !important;
+        padding: 0 0 0 18px !important; /* left padding in print */
+        background-clip: padding-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+      }
+      #labelsContainer {
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+      }
+      .label-preview {
+        page-break-before: avoid !important;
+        page-break-after: avoid !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🎨 Colorful Student Labels</h2>
+
+  <div class="form-container" id="formSection">
+    <label for="studentName">👦 Student Name:</label>
+    <input type="text" id="studentName" placeholder="Enter full name">
+
+    <label for="class">🏫 Class:</label>
+    <input type="text" id="class" placeholder="e.g. 2B, 5A">
+
+    <label for="roll">🔢 Roll Number:</label>
+    <input type="text" id="roll" placeholder="e.g. 12">
+
+    <div class="item-inputs">
+      <label>🧸 Items (up to 20):</label>
+      <div id="itemFields"></div>
+    </div>
+
+    <button onclick="generateLabels()">Preview Labels</button>
+  </div>
+
+  <div id="preview-section">
+    <h3>Label Previews:</h3>
+    <div class="label-grid" id="labelsContainer"></div>
+    <button class="print-button" onclick="window.print()">🖨️ Print Labels</button>
+  </div>
+
+  <script>
+    const itemContainer = document.getElementById("itemFields");
+    for (let i = 1; i <= 20; i++) {
+      const input = document.createElement("input");
+      input.type = "text";
+      input.placeholder = "Item " + i;
+      input.classList.add("item");
+      itemContainer.appendChild(input);
+    }
+
+    // All fun, NO GREEN colors!
+    const colors = [
+      "#f06292", // Pink
+      "#64b5f6", // Blue
+      "#ba68c8", // Purple
+      "#ffd54f", // Yellow
+      "#ff8a65", // Orange
+      "#9575cd", // Deep Purple
+      "#b388ff", // Light Purple
+      "#00bcd4", // Cyan
+      "#ffc107", // Amber
+      "#ff7043", // Deep Orange
+      "#c51162", // Magenta
+      "#8c9eff", // Indigo
+      "#ffccbc", // Peach
+      "#ea80fc", // Light Pink
+      "#b2b1ff", // Lilac
+      "#b0bec5", // Cool Gray
+      "#ffb74d", // Light Orange
+      "#90caf9", // Light Blue
+      "#f48fb1", // Light Pink
+      "#ce93d8"  // Lavender
+    ];
+
+    function generateLabels() {
+      const name = document.getElementById('studentName').value.trim();
+      const className = document.getElementById('class').value.trim();
+      const roll = document.getElementById('roll').value.trim();
+      const itemInputs = document.querySelectorAll('.item');
+      const labelBox = document.getElementById('labelsContainer');
+      labelBox.innerHTML = "";
+
+      if (!name || !className || !roll) {
+        alert("Please fill in name, class, and roll number.");
+        return;
+      }
+
+      let count = 0;
+      itemInputs.forEach((input, index) => {
+        const item = input.value.trim();
+        if (item !== "") {
+          const label = document.createElement("div");
+          label.className = "label-preview";
+          label.style.backgroundColor = colors[count % colors.length];
+          label.innerHTML = `
+            <div><strong>${name}</strong></div>
+            <div>Class: ${className}</div>
+            <div>Roll No: ${roll}</div>
+            <div>Item: <em>${item}</em></div>
+          `;
+          labelBox.appendChild(label);
+          count++;
+        }
+      });
+
+      if (count > 0) {
+        document.querySelector('.print-button').style.display = 'inline-block';
+        document.getElementById('preview-section').scrollIntoView({ behavior: "smooth" });
+      } else {
+        alert("Please enter at least one item.");
+      }
+    }
+  </script>
+</body>
+</html>
