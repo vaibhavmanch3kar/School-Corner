@@ -4,9 +4,244 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nirja Creative Corner - Courier Labels (All 4 on One Page)</title>
-  <style>
-    /* ...[All your existing CSS remains unchanged. Omitted here for brevity. Use as-is!]... */
-  </style>
+<style>
+  @page {
+    size: A4 landscape;
+    margin: 5mm;
+  }
+
+  body {
+    background: #fff;
+    margin: 0;
+  }
+  * {
+    box-sizing: border-box;
+    font-family: "Courier New", Courier, monospace;
+  }
+  .header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    background: #333;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+  }
+  .header img {
+    height: 32px;
+    margin-right: 10px;
+  }
+  .header h1 {
+    font-size: 1.2rem;
+    font-weight: normal;
+  }
+  .content-wrap {
+    padding-top: 70px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .main-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .left-content {
+    flex: 1 1 0;
+    min-width: 0;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px;
+    background: #fff;
+  }
+  .left-content h2 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  .labels-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 7px;
+    height: 100%;
+    min-height: 410px;
+  }
+  .label-box {
+    border: 2px solid #000;
+    border-radius: 8px;
+    background: #f9f9f9;
+    font-size: 1rem;
+    line-height: 1.3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 190px;
+    padding: 9px 7px;
+    page-break-inside: avoid;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.07);
+    height: 100%;
+  }
+  .label-box h3 {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 4px;
+    font-size: 1rem;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #000;
+  }
+  .to-box, .from-box {
+    padding: 6px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    border: 1.5px solid #000;
+    font-size: 0.98rem;
+    background: #fafafa;
+  }
+  .to-box {
+    background: #e3f2fd;
+    border-color: #007BFF;
+  }
+  .from-box {
+    background: #fff3cd;
+    border-color: #FF5733;
+    text-align: right;
+  }
+  .spacer {
+    flex: 1;
+  }
+  .right-content {
+    width: 320px;
+    min-width: 260px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 13px;
+    background: #f9f9f9;
+    height: fit-content;
+  }
+  .right-content h2 {
+    font-size: 1.1rem;
+    margin-bottom: 7px;
+    color: #333;
+  }
+  .label-block {
+    margin-bottom: 8px;
+  }
+  .label-block h3 {
+    font-size: 1.02rem;
+    margin-bottom: 3px;
+    color: #444;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 2px;
+  }
+  .form-row {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+  }
+  .form-row label {
+    font-weight: bold;
+    margin-bottom: 1px;
+    color: #555;
+    font-size: 0.97rem;
+  }
+  .form-row input[type="text"] {
+    padding: 6px;
+    font-size: 0.97rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  .btn-row {
+    margin-top: 9px;
+  }
+  .btn {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 7px 13px;
+    margin-right: 7px;
+    font-size: 1rem;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .btn:hover {
+    background: #555;
+  }
+
+  /* PRINT OVERRIDES */
+  @media print {
+    .header, .right-content {
+      display: none !important;
+    }
+    @page {
+      size: A4 landscape;
+      margin: 4mm;
+    }
+    body, html, .content-wrap, .main-container, .left-content {
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      background: #fff !important;
+    }
+    .main-container, .content-wrap, .left-content {
+      display: block !important;
+      width: 100% !important;
+    }
+    .labels-container {
+      grid-template-columns: 1fr 1fr !important;
+      grid-template-rows: 1fr 1fr !important;
+      gap: 4px !important;
+      min-height: 0 !important;
+      height: auto !important;
+      width: 100% !important;
+    }
+    .label-box {
+      font-size: 0.89rem !important;
+      min-height: 130px !important;
+      padding: 5px 4px !important;
+      border-width: 1px !important;
+      box-shadow: none !important;
+      page-break-inside: avoid;
+    }
+    .to-box, .from-box {
+      font-size: 0.92rem !important;
+      padding: 3px !important;
+      margin-bottom: 2px !important;
+      border-width: 1px !important;
+    }
+    .left-content h2 {
+      display: none;
+    }
+    .spacer {
+      display: none;
+    }
+  }
+  @media (max-width: 800px) {
+    .main-container {
+      flex-direction: column;
+    }
+    .left-content, .right-content {
+      width: 100%;
+      min-width: auto;
+    }
+    .left-content {
+      order: 2; 
+    }
+    .right-content {
+      order: 1;
+    }
+  }
+  @media (max-width: 480px) {
+    .labels-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
 </head>
 <body>
   <div class="header">
