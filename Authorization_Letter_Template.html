@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorization Letter - Nirja Creative Corner</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Times+New+Roman:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: white;
+            color: #000;
+        }
+        
+        .letterhead {
+            text-align: center;
+            border-bottom: 3px solid #ff9933;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .company-name {
+            font-size: 28px;
+            font-weight: bold;
+            color: #800000;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .company-details {
+            font-size: 12px;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .letter-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .date {
+            text-align: right;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        
+        .recipient {
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+        
+        .subject {
+            font-weight: bold;
+            margin-bottom: 25px;
+            text-decoration: underline;
+        }
+        
+        .salutation {
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .body-text {
+            text-align: justify;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .closing {
+            margin-top: 40px;
+            margin-bottom: 80px;
+        }
+        
+        .signature-section {
+            margin-top: 60px;
+        }
+        
+        .signature-line {
+            border-bottom: 1px solid #000;
+            width: 200px;
+            margin-bottom: 5px;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #ff9933;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .print-button:hover {
+            background: #e67300;
+        }
+        
+        @media print {
+            .print-button {
+                display: none;
+            }
+            
+            body {
+                padding: 0;
+            }
+            
+            .letter-content {
+                padding: 0;
+            }
+        }
+        
+        .contact-highlight {
+            color: #ff9933;
+            font-weight: bold;
+        }
+        
+        .company-seal {
+            text-align: center;
+            margin-top: 30px;
+            font-style: italic;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print Letter</button>
+    
+    <div class="letter-content">
+        <!-- Letterhead -->
+        <div class="letterhead">
+            <div class="company-name">NIRJA CREATIVE CORNER</div>
+            <div class="company-details">
+                Flat A410, Randhir Vihar CHS, Tembipada Road, Bhandup West, Mumbai - 400078<br>
+                Mobile: <span class="contact-highlight">8898323336</span> | Email: <span class="contact-highlight">nirjacreativecorner@gmail.com</span>
+            </div>
+        </div>
+        
+        <!-- Date -->
+        <div class="date">
+            Date: _______________
+        </div>
+        
+        <!-- Recipient -->
+        <div class="recipient">
+            <strong>To,</strong><br>
+            The Postmaster,<br>
+            Bhandup West Branch,<br>
+            Mumbai - 400078
+        </div>
+        
+        <!-- Subject -->
+        <div class="subject">
+            <strong>Subject:</strong> Authorization Letter Regarding Goods Packed by Nirja Creative Corner
+        </div>
+        
+        <!-- Salutation -->
+        <div class="salutation">
+            Respected Sir/Madam,
+        </div>
+        
+        <!-- Body -->
+        <div class="body-text">
+            This is to certify that the goods packed and dispatched by <strong>Nirja Creative Corner</strong> are manufactured by us and consist of handmade imitation jewelry and related articles.
+        </div>
+        
+        <div class="body-text">
+            All products are crafted with utmost care and quality, representing traditional and contemporary designs in imitation jewelry. These items are intended for personal use and gifting purposes.
+        </div>
+        
+        <div class="body-text">
+            Should you require any further information, clarification, or assistance regarding our products or this authorization, please feel free to contact us at our customer care number: <span class="contact-highlight">8898323336</span> or email us at <span class="contact-highlight">nirjacreativecorner@gmail.com</span>.
+        </div>
+        
+        <div class="body-text">
+            We appreciate your cooperation and look forward to your continued support.
+        </div>
+        
+        <!-- Closing -->
+        <div class="closing">
+            <strong>Warm regards,</strong>
+        </div>
+        
+        <!-- Signature Section -->
+        <div class="signature-section">
+            <strong>For Nirja Creative Corner</strong><br><br>
+            <div class="signature-line"></div>
+            <strong>Nirja Vaibhav Manchekar</strong><br>
+            <strong>Proprietor</strong><br>
+            <em>(Signature)</em>
+        </div>
+        
+        <!-- Company Seal -->
+        <div class="company-seal">
+            [Company Seal/Stamp]
+        </div>
+    </div>
+    
+    <script>
+        // Auto-fill current date
+        document.addEventListener('DOMContentLoaded', function() {
+            const today = new Date();
+            const dateString = today.toLocaleDateString('en-IN', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+            
+            // You can uncomment the line below to auto-fill the date
+            // document.querySelector('.date').innerHTML = `Date: ${dateString}`;
+        });
+    </script>
+</body>
+</html>

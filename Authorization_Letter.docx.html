@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Authorization Letter - Nirja Creative Corner</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 1in;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            font-size: 12pt;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+            color: #000;
+        }
+        
+        .document {
+            width: 8.5in;
+            min-height: 11in;
+            margin: 0 auto;
+            background: white;
+            padding: 1in;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .letterhead {
+            text-align: center;
+            border-bottom: 2pt solid #B8860B;
+            padding-bottom: 15pt;
+            margin-bottom: 20pt;
+        }
+        
+        .company-name {
+            font-size: 18pt;
+            font-weight: bold;
+            color: #8B0000;
+            margin-bottom: 8pt;
+            letter-spacing: 1pt;
+            text-transform: uppercase;
+        }
+        
+        .address-line {
+            font-size: 10pt;
+            margin-bottom: 3pt;
+            color: #333;
+        }
+        
+        .contact-info {
+            font-size: 10pt;
+            font-weight: bold;
+            color: #B8860B;
+            margin-top: 5pt;
+        }
+        
+        .date-section {
+            text-align: right;
+            margin-bottom: 25pt;
+            font-weight: bold;
+        }
+        
+        .recipient-section {
+            margin-bottom: 20pt;
+            line-height: 1.8;
+        }
+        
+        .subject-line {
+            font-weight: bold;
+            margin-bottom: 20pt;
+            text-decoration: underline;
+        }
+        
+        .salutation {
+            margin-bottom: 15pt;
+            font-weight: bold;
+        }
+        
+        .paragraph {
+            text-align: justify;
+            margin-bottom: 12pt;
+            text-indent: 0;
+        }
+        
+        .closing {
+            margin-top: 25pt;
+            margin-bottom: 50pt;
+        }
+        
+        .signature-block {
+            margin-top: 40pt;
+        }
+        
+        .signature-line {
+            border-bottom: 1pt solid #000;
+            width: 200pt;
+            margin-bottom: 3pt;
+            margin-top: 30pt;
+        }
+        
+        .name-title {
+            font-weight: bold;
+        }
+        
+        .highlight {
+            color: #B8860B;
+            font-weight: bold;
+        }
+        
+        .print-controls {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .btn {
+            background: #B8860B;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            margin: 2px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 11px;
+        }
+        
+        .btn:hover {
+            background: #8B7355;
+        }
+        
+        @media print {
+            .print-controls {
+                display: none;
+            }
+            
+            .document {
+                box-shadow: none;
+                margin: 0;
+                padding: 0;
+            }
+            
+            body {
+                margin: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="print-controls">
+        <button class="btn" onclick="window.print()">🖨️ Print</button>
+        <button class="btn" onclick="downloadAsWord()">📄 Save as Word</button>
+        <button class="btn" onclick="fillDate()">📅 Fill Date</button>
+    </div>
+    
+    <div class="document">
+        <!-- LETTERHEAD -->
+        <div class="letterhead">
+            <div class="company-name">NIRJA CREATIVE CORNER</div>
+            <div class="address-line">Flat A410, Randhir Vihar CHS, Tembipada Road</div>
+            <div class="address-line">Bhandup West, Mumbai - 400078</div>
+            <div class="contact-info">
+                Mobile: 8898323336 | Email: nirjacreativecorner@gmail.com
+            </div>
+        </div>
+        
+        <!-- DATE -->
+        <div class="date-section">
+            <span id="date-field">Date: _______________</span>
+        </div>
+        
+        <!-- RECIPIENT -->
+        <div class="recipient-section">
+            <strong>To,</strong><br>
+            The Postmaster,<br>
+            Bhandup West Branch,<br>
+            Mumbai - 400078
+        </div>
+        
+        <!-- SUBJECT -->
+        <div class="subject-line">
+            <strong>Subject:</strong> Authorization Letter Regarding Goods Packed by Nirja Creative Corner
+        </div>
+        
+        <!-- SALUTATION -->
+        <div class="salutation">
+            Respected Sir/Madam,
+        </div>
+        
+        <!-- BODY PARAGRAPHS -->
+        <div class="paragraph">
+            This is to certify that the goods packed and dispatched by <strong>Nirja Creative Corner</strong> are manufactured by us and consist of handmade imitation jewelry and related articles.
+        </div>
+        
+        <div class="paragraph">
+            All our products are carefully crafted using quality materials and represent both traditional and contemporary designs in imitation jewelry. These items are intended for personal use, gifting purposes, and retail distribution.
+        </div>
+        
+        <div class="paragraph">
+            Our business is duly registered and operates in compliance with all applicable laws and regulations. We maintain high standards of quality control and customer satisfaction in all our products.
+        </div>
+        
+        <div class="paragraph">
+            Should you require any further information, clarification, or assistance regarding our products, business operations, or this authorization letter, please feel free to contact us at our customer care number: <span class="highlight">8898323336</span> or email us at <span class="highlight">nirjacreativecorner@gmail.com</span>.
+        </div>
+        
+        <div class="paragraph">
+            We sincerely appreciate your cooperation and support in facilitating the smooth delivery of our products to our valued customers.
+        </div>
+        
+        <!-- CLOSING -->
+        <div class="closing">
+            <strong>Thanking you,</strong><br>
+            <strong>Warm regards,</strong>
+        </div>
+        
+        <!-- SIGNATURE BLOCK -->
+        <div class="signature-block">
+            <strong>For Nirja Creative Corner</strong>
+            
+            <div class="signature-line"></div>
+            
+            <div class="name-title">
+                <strong>Nirja Vaibhav Manchekar</strong><br>
+                <strong>Proprietor</strong>
+            </div>
+            
+            <div style="margin-top: 15pt; font-style: italic; color: #666;">
+                (Signature)
+            </div>
+        </div>
+        
+        <!-- FOOTER NOTE -->
+        <div style="margin-top: 30pt; text-align: center; font-size: 9pt; color: #666; font-style: italic;">
+            [Please affix company seal/stamp here]
+        </div>
+    </div>
+    
+    <script>
+        function fillDate() {
+            const today = new Date();
+            const dateString = today.toLocaleDateString('en-IN', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+            document.getElementById('date-field').innerHTML = `Date: ${dateString}`;
+        }
+        
+        function downloadAsWord() {
+            // Create a blob with the HTML content
+            const htmlContent = document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'application/msword' });
+            
+            // Create download link
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Nirja_Creative_Corner_Authorization_Letter.doc';
+            
+            // Trigger download
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            
+            // Clean up
+            URL.revokeObjectURL(link.href);
+        }
+        
+        // Auto-format for better Word compatibility
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add Word-specific meta tags
+            const meta1 = document.createElement('meta');
+            meta1.setAttribute('name', 'ProgId');
+            meta1.setAttribute('content', 'Word.Document');
+            document.head.appendChild(meta1);
+            
+            const meta2 = document.createElement('meta');
+            meta2.setAttribute('name', 'Generator');
+            meta2.setAttribute('content', 'Microsoft Word');
+            document.head.appendChild(meta2);
+        });
+    </script>
+</body>
+</html>
